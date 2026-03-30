@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LearnAble — Login</title>
+    <link
+      href="https://db.onlinewebfonts.com/c/c67f26aa1153b1d30673005d464adfd7?family=Fractura+ND"
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        font-family: "Inter", sans-serif;
+      }
+
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background-color: #f5e7dc;
+        overflow: hidden;
+      }
+
+      .container {
+        display: flex;
+        background-color: #f5e7dc;
+        width: 90%;
+        max-width: 1200px;
+        border-radius: 16px;
+        overflow: hidden;
+        justify-content: space-between;
+        align-items: center;
+        padding: 40px;
+      }
+
+      /* Left Section (Logo & Text) */
+      .left-section {
+        font-family: "Fractura+ND", sans-serif;
+        flex: 1;
+        text-align: center;
+        color: #b86400;
+      }
+
+      .left-section img {
+        width: 280px;
+        border-radius: 50%;
+        margin-bottom: 30px;
+      }
+
+      .left-section h1 {
+        font-family: "Fractura ND", sans-serif;
+        font-size: 36px;
+        font-weight: 700;
+        letter-spacing: 2px;
+        margin-bottom: 10px;
+      }
+
+      .left-section p {
+        font-family: "Fractura ND", sans-serif;
+        font-size: 20px;
+        font-weight: 600;
+        color: #b86400;
+        letter-spacing: 1px;
+      }
+
+      /* Right Section (Form) */
+      .right-section {
+        flex: 1;
+        background-color: #fff4eb;
+        border-radius: 16px;
+        padding: 50px 60px;
+        position: relative;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+      }
+
+      .signup-btn {
+        position: absolute;
+        right: 40px;
+        top: 30px;
+        background-color: #ff6f1f;
+        border: none;
+        color: white;
+        font-weight: 600;
+        border-radius: 8px;
+        padding: 10px 24px;
+        cursor: pointer;
+        font-size: 15px;
+      }
+
+      .right-section h2 {
+        font-size: 30px;
+        font-weight: 700;
+        margin-bottom: 8px;
+      }
+
+      .right-section p {
+        color: #555;
+        margin-bottom: 30px;
+      }
+
+      /* Google Login */
+      .google-login {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: #ff6f1f;
+        color: white;
+        font-weight: 600;
+        padding: 12px 0;
+        border-radius: 6px;
+        border: none;
+        width: 100%;
+        cursor: pointer;
+        font-size: 15px;
+        transition: background-color 0.3s;
+      }
+
+      .google-login:hover {
+        background-color: #e65f16;
+      }
+
+      .google-login img {
+        width: 22px;
+        height: 22px;
+        margin-right: 10px;
+      }
+
+      /* Divider Line */
+      .divider {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 25px 0;
+      }
+
+      .divider::before,
+      .divider::after {
+        content: "";
+        flex: 1;
+        height: 1px;
+        background-color: #ccc;
+      }
+
+      .divider span {
+        margin: 0 12px;
+        font-size: 14px;
+        color: #777;
+        white-space: nowrap;
+      }
+
+      /* Input Fields */
+      .form-group {
+        margin-bottom: 20px;
+      }
+
+      .form-group label {
+        display: block;
+        font-weight: 600;
+        margin-bottom: 8px;
+        font-size: 15px;
+      }
+
+      .form-group input {
+        width: 100%;
+        padding: 12px;
+        border: 1.5px solid #aaa;
+        border-radius: 6px;
+        font-size: 15px;
+        background-color: #ffe8d8;
+        transition: border 0.3s;
+      }
+
+      .form-group input:focus {
+        outline: none;
+        border-color: #ff6f1f;
+      }
+
+      /* Password Wrapper */
+      .password-wrapper {
+        position: relative;
+      }
+
+      .password-wrapper .toggle-password {
+        position: absolute;
+        right: 12px;
+        top: 67%;
+        transform: translateY(-50%);
+        cursor: pointer;
+        width: 20px;
+        height: 25px;
+      }
+
+      /* Remember Me & Forgot Password */
+      .options {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin: 15px 0 25px;
+      }
+
+      .options label {
+        font-size: 14px;
+        color: #444;
+      }
+
+      .options a {
+        color: #5e2eff;
+        font-size: 14px;
+        text-decoration: none;
+        transition: color 0.2s;
+      }
+
+      .options a:hover {
+        color: #421cc5;
+      }
+
+      /* Login Button */
+      .login-btn {
+        width: 100%;
+        background-color: #ff6f1f;
+        color: white;
+        font-weight: 600;
+        border: none;
+        border-radius: 6px;
+        padding: 12px;
+        font-size: 16px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+      }
+
+      .login-btn:hover {
+        background-color: #e65f16;
+      }
+
+      /* Footer link */
+      .footer {
+        text-align: center;
+        margin-top: 20px;
+        font-size: 14px;
+      }
+
+      .footer a {
+        color: #5e2eff;
+        font-weight: 600;
+        text-decoration: none;
+      }
+
+      @media (max-width: 950px) {
+        .container {
+          flex-direction: column;
+          align-items: center;
+        }
+
+        .left-section {
+          margin-bottom: 30px;
+        }
+
+        .right-section {
+          width: 100%;
+          padding: 30px;
+        }
+
+        .signup-btn {
+          right: 20px;
+          top: 20px;
+          padding: 8px 18px;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+      <!-- Left Section -->
+      <div class="left-section">
+        <img
+          src="https://i.postimg.cc/qqY9kg7c/Screenshot-2025-10-24-170223-removebg-preview.png"
+          alt="LearnAble Logo"
+        />
+        <h1>LEARNABLE</h1>
+        <p>“WHERE EVERY STUDENT THRIVES”</p>
+      </div>
+
+      <!-- Right Section -->
+      <div class="right-section">
+        <button class="signup-btn">Sign Up</button>
+        <h2>Login now</h2>
+        <p>Hi, Welcome back 👋</p>
+
+        <button class="google-login">
+          <img
+            src="https://www.svgrepo.com/show/475656/google-color.svg"
+            alt="Google Logo"
+          />
+          Login with Google
+        </button>
+
+        <div class="divider"><span>or Login with Email</span></div>
+
+        <form action="/login" method="POST">
+          <div class="form-group">
+            <label>Email</label>
+            <input
+              type="email"
+              name="email"
+              placeholder="Enter your email id"
+              required
+            />
+          </div>
+
+          <div class="form-group password-wrapper">
+            <label>Password</label>
+            <input
+              type="password"
+              name="password"
+              id="password"
+              placeholder="Enter your password"
+              required
+            />
+            <img
+              src="https://www.svgrepo.com/show/378601/eye-closed.svg"
+              alt="Toggle Password"
+              class="toggle-password"
+              id="togglePassword"
+            />
+          </div>
+
+          <div class="options">
+            <label><input type="checkbox" /> Remember Me</label>
+            <a href="#">Forgot Password?</a>
+          </div>
+
+          <button type="submit" class="login-btn">Login</button>
+
+          <div class="footer">
+            Not registered yet? <a href="/signup">Create an account</a>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <script>
+      const togglePassword = document.getElementById("togglePassword");
+      const passwordInput = document.getElementById("password");
+
+      togglePassword.addEventListener("click", () => {
+        const type =
+          passwordInput.getAttribute("type") === "password"
+            ? "text"
+            : "password";
+        passwordInput.setAttribute("type", type);
+        togglePassword.src =
+          type === "password"
+            ? "https://www.svgrepo.com/show/378601/eye-closed.svg"
+            : "https://www.svgrepo.com/show/450438/eye.svg";
+      });
+    </script>
+  </body>
+</html>
